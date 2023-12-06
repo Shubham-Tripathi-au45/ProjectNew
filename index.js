@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 1024;
+const port = 80;
 
 app.get('/sayHello', (req, res) => {
     const jsonResponse = { message: 'Hello User' };
