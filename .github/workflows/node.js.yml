@@ -30,18 +30,17 @@ jobs:
     - run: npm run build --if-present
     - run: npm run test:staging 
     - name: multiple command
-uses: appleboy/ssh-action@55dabf81b49d4120609345970c91507e2d734799
-with:
-  host: ${{ secrets.HOST }}
-  username: ${{ secrets.USERNAME }}
-  key: ${{ secrets.SSH_KEY }}
-    
-   script: |
-      pm2 delete all
-      cd /var/app/ProjectNew
-      git pull
-      npm install
-      pm2 start npm -- start
+      uses: appleboy/ssh-action@55dabf81b49d4120609345970c91507e2d734799
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          pm2 delete all
+          cd /var/app/ProjectNew
+          git pull
+          npm install
+          pm2 start npm -- start
       
      
     
